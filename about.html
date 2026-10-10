@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Haajar Archer</title>
+  <meta name="description" content="About Haajar Archer: experience, education and toolkit.">
+  <meta property="og:title" content="About — Haajar Archer">
+  <meta property="og:description" content="About Haajar Archer: experience, education and toolkit.">
+  <meta property="og:image" content="assets/hero.jpg">
+  <meta name="theme-color" content="#8a6cf0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23d9c9ff'/%3E%3Cstop offset='1' stop-color='%237b4cf0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="video" href="assets/data.mp4" type="video/mp4">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-loading" data-page="about">
+
+  <div class="loader" id="loader" aria-live="polite">
+    <div class="loader__inner">
+      <div class="wordmark wordmark--lg" aria-label="haajar archer">haaj<span class="accent">ar</span></div>
+      <p class="mono loader__tag">AGENTIC OPERATOR&nbsp;&nbsp;·&nbsp;&nbsp;AI, AUTOMATION<br>AND DATA SYSTEMS FROM DOHA</p>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <span class="mono loader__count" id="loaderCount">000</span>
+    </div>
+    <button class="pill pill--glass loader__enter" id="enterBtn" type="button" disabled>
+      <span class="orb orb--sm" aria-hidden="true"></span>
+      <span>Enter experience</span>
+    </button>
+  </div>
+  <div class="stage" aria-hidden="true">
+    <div class="stage__layer is-active" data-scene="data">
+      <video src="assets/data.mp4" poster="assets/data.jpg" muted loop playsinline preload="auto"></video>
+    </div>
+    <div class="stage__layer" data-scene="hero">
+      <video src="assets/hero.mp4" poster="assets/hero.jpg" muted loop playsinline preload="metadata"></video>
+    </div>
+    <canvas class="stage__particles" id="particles"></canvas>
+    <div class="stage__veil"></div>
+    <div class="stage__grain"></div>
+  </div>
+
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="curtain" aria-hidden="true"></div>
+  <header class="header" id="header">
+    <a class="wordmark" href="index.html" aria-label="Haajar Archer, home">haaj<span class="accent">ar</span></a>
+    <nav aria-label="Primary">
+      <ul class="header__links">
+        <li><a href="about.html" aria-current="page"><span class="mono header__idx">01</span>About</a></li>
+        <li><a href="work.html"><span class="mono header__idx">02</span>Work</a></li>
+        <li><a href="contact.html"><span class="mono header__idx">03</span>Contact</a></li>
+        <li class="header__cv-mobile"><a href="resume/Haajar-Archer-Resume.pdf" target="_blank" rel="noopener"><span class="mono header__idx">04</span>Resume</a></li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <a class="pill pill--glass pill--sm" href="resume/Haajar-Archer-Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↓</span></a>
+      <a class="header__orb" href="https://www.linkedin.com/in/haajar-archer-7900a0242/" target="_blank" rel="noopener" aria-label="Connect on LinkedIn">
+        <span class="orb" aria-hidden="true"></span>
+        <span class="header__tip mono">CONNECT ON LINKEDIN</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero" data-scene="data">
+      <span class="tag">About</span>
+      <h1 class="display" data-intro>
+        <span class="line"><em class="it">Hi,</em> I’m</span>
+        <span class="line">Haajar</span>
+      </h1>
+    </section>
+
+    <section class="bio" data-scene="data">
+      <div class="bio__text" data-reveal>
+        <p class="bio__lede">I’m an Agentic Operator at Utopia Studio in Doha. I build the AI agents and internal platforms that run the studio’s day-to-day work, from onboarding new fellows to compliance, analytics and research.</p>
+        <p>I came to engineering through data. I studied Computer Science with a specialism in Data Analytics, building warehouses, dashboards and machine learning models. Now I combine the two: I ship full-stack products in TypeScript and Next.js, wire them into the tools teams already use, and measure whether they actually help.</p>
+        <p>I like work that removes busywork for real people, and I care about testing it properly. I’ve written 2,800+ automated tests at Utopia so far.</p>
+      </div>
+      <dl class="facts" data-reveal>
+        <div><dt class="mono">Based in</dt><dd>Doha, Qatar</dd></div>
+        <div><dt class="mono">Currently</dt><dd>Agentic Operator Intern, Utopia Studio</dd></div>
+        <div><dt class="mono">Studied</dt><dd>BSc (Hons) Computer Science, Data Analytics · APU</dd></div>
+        <div><dt class="mono">Languages</dt><dd>English (native), Arabic (conversational)</dd></div>
+        <div><dt class="mono">Certified</dt><dd>CCNA: Introduction to Networks · Cisco</dd></div>
+      </dl>
+    </section>
+
+    <section class="experience" data-scene="data" id="experience">
+      <div class="section-head">
+        <span class="tag">Experience</span>
+        <h2 class="display display--md">
+          <span class="line"><em class="it">Where</em></span>
+          <span class="line">I’ve worked</span>
+        </h2>
+      </div>
+      <div class="jobs">
+        <article class="job is-open">
+          <button class="job__head" type="button" aria-expanded="true">
+            <span class="mono job__idx">(001)</span>
+            <span class="job__title">Agentic Operator Intern</span>
+            <span class="job__org">Utopia Studio · Doha</span>
+            <span class="mono job__date">JUN 2026 — PRESENT</span>
+            <span class="job__toggle" aria-hidden="true"></span>
+          </button>
+          <div class="job__body">
+            <div class="job__inner">
+              <p class="job__lede">Top engineering contributor to the studio’s two internal AI platforms: ~1,800 commits, about 75% of each codebase, and 2,800+ automated tests.</p>
+              <div class="job__cols">
+                <div>
+                  <h3 class="mono">UTOPIA OS · STUDIO OPERATING SYSTEM</h3>
+                  <ul>
+                    <li><b>Fellow onboarding, end to end.</b> Fellow-side forms with autosave, Drive uploads, ATS auto-fill and booking, plus the admin/studio onboarding desk for review and module unlocks.</li>
+                    <li><b>Provisioning playbook.</b> 10 automated steps (Linear, Slack, Google Drive, Claude project context, welcome email) with retries and an audit trail.</li>
+                    <li><b>Compliance desk.</b> A 15-step case runbook with DocuSign signature verification, director approvals and gated stipends.</li>
+                    <li><b>Product analytics.</b> Consent-gated PostHog, masked replays, daily-active usage and an activation funnel dashboard.</li>
+                    <li><b>PRview.</b> A Claude Code plugin that films a narrated video walkthrough of every merged PR.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="mono">R&amp;D DESK · AI RESEARCH WORKSPACE</h3>
+                  <ul>
+                    <li><b>RAG + Concierge agent.</b> Per-fellow vector search and a tool-calling agent with 4 specialist desks, memory and evals.</li>
+                    <li><b>Research engine.</b> Scouts over arXiv, Semantic Scholar, OpenAlex and PubMed, with 100% recall and 76% precision@5 on a gold set.</li>
+                    <li><b>Voice onboarding.</b> Two-way speech onboarding plus auto-generated, journal-style research papers.</li>
+                  </ul>
+                  <div class="chips mono">
+                    <span>TypeScript</span><span>Next.js</span><span>React</span><span>Convex</span><span>Clerk</span><span>Vercel AI SDK</span><span>Claude</span><span>Composio</span><span>PostHog</span><span>Playwright</span><span>Vitest</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="job">
+          <button class="job__head" type="button" aria-expanded="false">
+            <span class="mono job__idx">(002)</span>
+            <span class="job__title">Project Management Intern</span>
+            <span class="job__org">APU Career Centre · Kuala Lumpur</span>
+            <span class="mono job__date">JUL 2024 — NOV 2024</span>
+            <span class="job__toggle" aria-hidden="true"></span>
+          </button>
+          <div class="job__body">
+            <div class="job__inner">
+              <ul class="job__single">
+                <li>Built an end-to-end survey pipeline (design, collection, cleaning, analysis) for <b>1,300+ students</b>.</li>
+                <li>Analysed responses in Python, Excel and Power BI to surface the most-demanded certifications and languages, which shaped curriculum and workshop planning.</li>
+                <li>Benchmarked certification programmes against competitor institutions and ran performance analytics for 3+ career events.</li>
+                <li>Represented APU at the NHCCE 2024 exhibition to grow employer engagement.</li>
+              </ul>
+              <div class="chips mono"><span>Python</span><span>Power BI</span><span>Excel</span><span>Survey design</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="job">
+          <button class="job__head" type="button" aria-expanded="false">
+            <span class="mono job__idx">(003)</span>
+            <span class="job__title">BSc (Hons) Computer Science</span>
+            <span class="job__org">Specialism in Data Analytics · APU</span>
+            <span class="mono job__date">SEP 2022 — DEC 2025</span>
+            <span class="job__toggle" aria-hidden="true"></span>
+          </button>
+          <div class="job__body">
+            <div class="job__inner">
+              <p class="job__lede">Asia Pacific University of Technology &amp; Innovation, Kuala Lumpur. Machine learning, data warehousing, BI and analytics, plus the CCNA: Introduction to Networks certification from Cisco.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="capabilities" data-scene="data" aria-label="What I do">
+      <span class="tag">What I do</span>
+      <div class="marquee" aria-hidden="true"><div class="marquee__track"></div></div>
+      <ul class="sr-only" id="capList">
+        <li>AI Agents &amp; Tool Calling</li>
+        <li>RAG &amp; Vector Search</li>
+        <li>Workflow Automation</li>
+        <li>Full-stack Web Apps</li>
+        <li>Product Analytics</li>
+        <li>Data Warehousing</li>
+        <li>Machine Learning</li>
+        <li>Dashboards &amp; BI</li>
+        <li>Slack · Linear · Drive Integrations</li>
+        <li>Evals &amp; Testing</li>
+        <li>Developer Tooling</li>
+        <li>Data Storytelling</li>
+      </ul>
+    </section>
+
+    <section class="toolkit" data-scene="hero">
+      <div class="section-head section-head--row">
+        <div>
+          <span class="tag">Toolkit</span>
+          <h2 class="display display--md">
+            <span class="line">Tools <em class="it">I</em></span>
+            <span class="line">work with</span>
+          </h2>
+        </div>
+        <a class="pill pill--ghost magnetic" href="resume/Haajar-Archer-Resume.pdf" target="_blank" rel="noopener"><span>Download resume</span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="toolkit__grid">
+        <div class="toolkit__group">
+          <span class="mono toolkit__h">(001) Languages</span>
+          <div class="chips mono"><span>TypeScript</span><span>JavaScript</span><span>Python</span><span>SQL</span></div>
+        </div>
+        <div class="toolkit__group">
+          <span class="mono toolkit__h">(002) Web &amp; Backend</span>
+          <div class="chips mono"><span>Next.js</span><span>React</span><span>Node.js</span><span>Convex</span><span>Clerk</span><span>FastAPI</span><span>Tailwind CSS</span><span>REST &amp; webhooks</span></div>
+        </div>
+        <div class="toolkit__group">
+          <span class="mono toolkit__h">(003) AI &amp; Agents</span>
+          <div class="chips mono"><span>LLM agents &amp; tool calling</span><span>RAG &amp; vector search</span><span>Evals</span><span>Claude Code</span><span>Vercel AI SDK</span><span>Claude &amp; OpenAI APIs</span><span>Composio</span><span>MCP</span></div>
+        </div>
+        <div class="toolkit__group">
+          <span class="mono toolkit__h">(004) Data &amp; ML</span>
+          <div class="chips mono"><span>Pandas</span><span>NumPy</span><span>XGBoost</span><span>CatBoost</span><span>TensorFlow / Keras</span><span>BERT</span><span>SHAP</span></div>
+        </div>
+        <div class="toolkit__group">
+          <span class="mono toolkit__h">(005) Databases</span>
+          <div class="chips mono"><span>PostgreSQL</span><span>SQL Server</span><span>MongoDB</span><span>Redis</span></div>
+        </div>
+        <div class="toolkit__group">
+          <span class="mono toolkit__h">(006) Analytics &amp; BI</span>
+          <div class="chips mono"><span>PostHog</span><span>Power BI (DAX)</span><span>Google Analytics</span><span>SAS Enterprise Miner</span><span>R Studio</span><span>Excel</span></div>
+        </div>
+        <div class="toolkit__group">
+          <span class="mono toolkit__h">(007) Tools &amp; DevOps</span>
+          <div class="chips mono"><span>Git</span><span>GitHub Actions</span><span>Vercel</span><span>Docker</span><span>Vitest</span><span>Playwright</span><span>Sentry</span><span>Linear</span><span>Slack API</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" data-scene="hero">
+      <span class="tag">Next</span>
+      <h2 class="display display--md">
+        <span class="line">See what <em class="it">I’ve</em></span>
+        <span class="line indent"><span class="arrow">↪</span>built</span>
+      </h2>
+      <div class="cta__row">
+        <a class="pill pill--glass pill--lg magnetic" href="work.html"><span class="orb orb--sm" aria-hidden="true"></span><span>View my work</span><span aria-hidden="true">→</span></a>
+        <a class="pill pill--ghost magnetic" href="contact.html"><span>Contact</span><span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__col">
+        <span class="mono footer__h">Social</span>
+        <a href="https://www.linkedin.com/in/haajar-archer-7900a0242/" target="_blank" rel="noopener"><span class="mono">[01]</span> LinkedIn</a>
+        <a href="https://github.com/haaj-1" target="_blank" rel="noopener"><span class="mono">[02]</span> GitHub</a>
+        <a href="mailto:ihaajarcher@gmail.com"><span class="mono">[03]</span> Email</a>
+      </div>
+      <div class="footer__col">
+        <span class="mono footer__h">Pages</span>
+        <a href="index.html"><span class="mono">[01]</span> Home</a>
+        <a href="about.html"><span class="mono">[02]</span> About</a>
+        <a href="work.html"><span class="mono">[03]</span> Work</a>
+        <a href="contact.html"><span class="mono">[04]</span> Contact</a>
+      </div>
+      <div class="footer__col">
+        <span class="mono footer__h">Location</span>
+        <span>Doha, Qatar</span>
+        <span class="mono footer__small">Canadian · English &amp; Arabic</span>
+      </div>
+      <div class="footer__base mono">
+        <span>© 2026 Haajar Saeed Archer</span>
+        <span>Visuals generated with Higgsfield</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

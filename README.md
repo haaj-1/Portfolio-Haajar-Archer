@@ -5,11 +5,13 @@ I build AI agents, automation and data systems that run the work behind the work
 
 **Live:** https://haaj-1.github.io · **LinkedIn:** https://www.linkedin.com/in/haajar-archer-7900a0242/
 
-## What's inside
+## Pages
 
-- Experience at Utopia Studio (Utopia OS and the R&D Desk) and the APU Career Centre
-- Selected projects: Utopia OS, R&D Desk, PRview, Utopia Ops Agent, PrePost Analytics, Qatar Economic Analysis, CNN vs ViT, and the Big Five Predictor
-- Contact via LinkedIn
+- **Home** (`index.html`): intro, highlights and featured work
+- **About** (`about.html`): bio, experience at Utopia Studio and the APU Career Centre, education and toolkit
+- **Work** (`work.html`): all projects, filterable by AI & Agents or Data & ML
+- **Contact** (`contact.html`): LinkedIn, email, GitHub and resume
+- **Resume** (`resume/Haajar-Archer-Resume.pdf`): public copy of my CV
 
 ## How it's built
 

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Haajar Archer</title>
+  <meta name="description" content="Get in touch with Haajar Archer via LinkedIn or email.">
+  <meta property="og:title" content="Contact — Haajar Archer">
+  <meta property="og:description" content="Get in touch with Haajar Archer via LinkedIn or email.">
+  <meta property="og:image" content="assets/hero.jpg">
+  <meta name="theme-color" content="#8a6cf0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23d9c9ff'/%3E%3Cstop offset='1' stop-color='%237b4cf0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="video" href="assets/portal.mp4" type="video/mp4">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-loading" data-page="contact">
+
+  <div class="loader" id="loader" aria-live="polite">
+    <div class="loader__inner">
+      <div class="wordmark wordmark--lg" aria-label="haajar archer">haaj<span class="accent">ar</span></div>
+      <p class="mono loader__tag">AGENTIC OPERATOR&nbsp;&nbsp;·&nbsp;&nbsp;AI, AUTOMATION<br>AND DATA SYSTEMS FROM DOHA</p>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <span class="mono loader__count" id="loaderCount">000</span>
+    </div>
+    <button class="pill pill--glass loader__enter" id="enterBtn" type="button" disabled>
+      <span class="orb orb--sm" aria-hidden="true"></span>
+      <span>Enter experience</span>
+    </button>
+  </div>
+  <div class="stage" aria-hidden="true">
+    <div class="stage__layer is-active" data-scene="portal">
+      <video src="assets/portal.mp4" poster="assets/portal.jpg" muted loop playsinline preload="auto"></video>
+    </div>
+    <canvas class="stage__particles" id="particles"></canvas>
+    <div class="stage__veil"></div>
+    <div class="stage__grain"></div>
+  </div>
+
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="curtain" aria-hidden="true"></div>
+  <header class="header" id="header">
+    <a class="wordmark" href="index.html" aria-label="Haajar Archer, home">haaj<span class="accent">ar</span></a>
+    <nav aria-label="Primary">
+      <ul class="header__links">
+        <li><a href="about.html"><span class="mono header__idx">01</span>About</a></li>
+        <li><a href="work.html"><span class="mono header__idx">02</span>Work</a></li>
+        <li><a href="contact.html" aria-current="page"><span class="mono header__idx">03</span>Contact</a></li>
+        <li class="header__cv-mobile"><a href="resume/Haajar-Archer-Resume.pdf" target="_blank" rel="noopener"><span class="mono header__idx">04</span>Resume</a></li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <a class="pill pill--glass pill--sm" href="resume/Haajar-Archer-Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↓</span></a>
+      <a class="header__orb" href="https://www.linkedin.com/in/haajar-archer-7900a0242/" target="_blank" rel="noopener" aria-label="Connect on LinkedIn">
+        <span class="orb" aria-hidden="true"></span>
+        <span class="header__tip mono">CONNECT ON LINKEDIN</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="contact" data-scene="portal" id="contact">
+      <span class="tag">Stay in touch</span>
+      <h1 class="display" data-intro>
+        <span class="line">Let’s <em class="it">build</em></span>
+        <span class="line indent"><span class="arrow">↪</span>something</span>
+        <span class="line">meaningful</span>
+      </h1>
+      <p class="mono caption" data-reveal>HAVE A ROLE, AN IDEA OR A WORKFLOW THAT SHOULD RUN ITSELF? LET’S TALK</p>
+      <div class="contact__ctas" data-reveal>
+        <a class="pill pill--glass pill--lg magnetic" href="https://www.linkedin.com/in/haajar-archer-7900a0242/" target="_blank" rel="noopener">
+          <span class="orb orb--sm" aria-hidden="true"></span><span>Connect on LinkedIn</span><span aria-hidden="true">↗</span>
+        </a>
+        <button class="pill pill--ghost magnetic copy-email" type="button" data-email="ihaajarcher@gmail.com">
+          <span class="copy-email__label">ihaajarcher@gmail.com</span><span class="mono copy-email__hint">COPY</span>
+        </button>
+      </div>
+      <dl class="contact__list" data-reveal>
+        <div><dt class="mono">[01] LinkedIn</dt><dd><a href="https://www.linkedin.com/in/haajar-archer-7900a0242/" target="_blank" rel="noopener">haajar-archer ↗</a></dd></div>
+        <div><dt class="mono">[02] Email</dt><dd><a href="mailto:ihaajarcher@gmail.com">ihaajarcher@gmail.com</a></dd></div>
+        <div><dt class="mono">[03] GitHub</dt><dd><a href="https://github.com/haaj-1" target="_blank" rel="noopener">haaj-1 ↗</a></dd></div>
+        <div><dt class="mono">[04] Resume</dt><dd><a href="resume/Haajar-Archer-Resume.pdf" target="_blank" rel="noopener">Download PDF ↓</a></dd></div>
+      </dl>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__col">
+        <span class="mono footer__h">Social</span>
+        <a href="https://www.linkedin.com/in/haajar-archer-7900a0242/" target="_blank" rel="noopener"><span class="mono">[01]</span> LinkedIn</a>
+        <a href="https://github.com/haaj-1" target="_blank" rel="noopener"><span class="mono">[02]</span> GitHub</a>
+        <a href="mailto:ihaajarcher@gmail.com"><span class="mono">[03]</span> Email</a>
+      </div>
+      <div class="footer__col">
+        <span class="mono footer__h">Pages</span>
+        <a href="index.html"><span class="mono">[01]</span> Home</a>
+        <a href="about.html"><span class="mono">[02]</span> About</a>
+        <a href="work.html"><span class="mono">[03]</span> Work</a>
+        <a href="contact.html"><span class="mono">[04]</span> Contact</a>
+      </div>
+      <div class="footer__col">
+        <span class="mono footer__h">Location</span>
+        <span>Doha, Qatar</span>
+        <span class="mono footer__small">Canadian · English &amp; Arabic</span>
+      </div>
+      <div class="footer__base mono">
+        <span>© 2026 Haajar Saeed Archer</span>
+        <span>Visuals generated with Higgsfield</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
