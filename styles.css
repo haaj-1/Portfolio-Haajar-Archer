@@ -191,7 +191,7 @@ section { position: relative; padding: 0 var(--gutter); }
   text-shadow: 0 2px 30px rgba(40, 10, 100, .25);
 }
 .display--md { font-size: clamp(46px, 7.4vw, 118px); }
-.display .line { display: block; overflow: hidden; padding-bottom: .04em; }
+.display .line { display: block; overflow: hidden; padding: .06em 0 .2em; margin: -.06em 0 -.16em; }
 .display .line > .word { display: inline-block; }
 .display .it { font-style: italic; text-transform: none; letter-spacing: 0; }
 .display .indent { padding-left: .9em; position: relative; }
