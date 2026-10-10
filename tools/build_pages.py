@@ -258,9 +258,9 @@ HOME = f"""
       </div>
       <div class="grid">
 {card("utopia-os", wide=True)}
+{card("prepost")}
 {card("prview")}
 {card("rnd-desk")}
-{card("prepost")}
 {card("ops-agent")}
       </div>
     </section>
