@@ -1,0 +1,8 @@
+{
+  "name": "portfolio-tools",
+  "private": true,
+  "description": "Build scripts for the portfolio pages and resume",
+  "dependencies": {
+    "docx": "^9.0.0"
+  }
+}

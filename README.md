@@ -24,6 +24,24 @@ A static site with no build step, so it deploys straight to GitHub Pages.
 
 Design inspired by the cinematic, scroll-led style of award-winning agency sites.
 
+## Editing
+
+The four pages are generated from `tools/build_pages.py`, so edit the content there rather than in the HTML:
+
+```bash
+python3 tools/build_pages.py
+```
+
+The resume is built from `tools/build_resume.js`, which needs Node.js:
+
+```bash
+cd tools && npm install
+node build_resume.js out --public   # web copy (no phone or birth date)
+node build_resume.js out            # full CV; reads tools/private.json (not committed)
+```
+
+Then print `out/*.html` to PDF. The public copy lives at `resume/Haajar-Archer-Resume.pdf`.
+
 ## Run locally
 
 ```bash
