@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261010-16">
+  <link rel="stylesheet" href="styles.css?v=20261010-28">
 </head>
 <body class="is-loading" data-page="home">
 
@@ -30,11 +30,11 @@
     </button>
   </div>
   <div class="stage" aria-hidden="true">
-    <div class="stage__layer is-active" data-scene="hero">
-      <img src="assets/scenes/meadow-1920.jpg?v=garden3" srcset="assets/scenes/meadow-1920.jpg?v=garden3 1920w, assets/scenes/meadow-3840.jpg?v=garden3 3840w" sizes="100vw" alt="" decoding="async" fetchpriority="high">
+    <div class="stage__layer is-active" data-scene="lake">
+      <img src="assets/scenes/lake-1920.jpg?v=garden8" srcset="assets/scenes/lake-1920.jpg?v=garden8 1920w, assets/scenes/lake-3840.jpg?v=garden8 3840w" sizes="(max-aspect-ratio: 16/9) 178vh, 100vw" alt="" decoding="async" fetchpriority="high">
     </div>
     <div class="stage__layer" data-scene="data">
-      <img src="assets/scenes/forest-1920.jpg?v=garden3" srcset="assets/scenes/forest-1920.jpg?v=garden3 1920w, assets/scenes/forest-3840.jpg?v=garden3 3840w" sizes="100vw" alt="" decoding="async" fetchpriority="low">
+      <img src="assets/scenes/forest-1920.jpg?v=garden8" srcset="assets/scenes/forest-1920.jpg?v=garden8 1920w, assets/scenes/forest-3840.jpg?v=garden8 3840w" sizes="(max-aspect-ratio: 16/9) 178vh, 100vw" alt="" decoding="async" fetchpriority="low">
     </div>
     <canvas class="stage__particles" id="particles"></canvas>
     <div class="stage__veil"></div>
@@ -50,11 +50,9 @@
         <li><a href="about.html"><span class="mono header__idx">01</span>About</a></li>
         <li><a href="work.html"><span class="mono header__idx">02</span>Work</a></li>
         <li><a href="contact.html"><span class="mono header__idx">03</span>Contact</a></li>
-        <li class="header__cv-mobile"><a href="resume/Haajar-Archer-Resume.pdf" target="_blank" rel="noopener"><span class="mono header__idx">04</span>Resume</a></li>
       </ul>
     </nav>
     <div class="header__actions">
-      <a class="pill pill--glass pill--sm" href="resume/Haajar-Archer-Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↓</span></a>
       <a class="header__orb" href="https://www.linkedin.com/in/haajar-archer-7900a0242/" target="_blank" rel="noopener" aria-label="Connect on LinkedIn">
         <span class="orb" aria-hidden="true"></span>
         <span class="header__tip mono">CONNECT ON LINKEDIN</span>
@@ -64,7 +62,7 @@
 
   <main id="main">
 
-    <section class="hero" data-scene="hero" id="top">
+    <section class="hero" data-scene="lake" id="top">
       <p class="mono kicker" data-reveal>AGENTIC OPERATOR AT UTOPIA STUDIO.<br>BUILDING AI AGENTS, AUTOMATION<br>AND DATA SYSTEMS IN DOHA, QATAR</p>
       <h1 class="display" data-intro>
         <span class="line"><em class="it">I</em> build agents</span>
@@ -78,7 +76,7 @@
       <div class="hero__scroll mono" aria-hidden="true"><span>Scroll</span><i></i></div>
     </section>
 
-    <section class="statement" data-scene="hero">
+    <section class="statement" data-scene="lake">
       <span class="tag">Approach</span>
       <h2 class="display display--md">
         <span class="line"><em class="it">I</em> automate</span>
@@ -107,28 +105,28 @@
       </div>
       <div class="grid">
         <article class="card card--wide">
-          <div class="card__media"><img src="assets/work/utopia-os.jpg?v=garden3" alt="" loading="lazy"></div>
+          <div class="card__media"><img src="assets/work/utopia-os.jpg?v=garden8" alt="" loading="lazy"></div>
           <div class="card__meta mono"><span>NEXT.JS</span><span>CONVEX</span><span>AGENTS</span><span>ANALYTICS</span></div>
           <h3 class="card__title">Utopia OS</h3>
           <p class="card__desc">The studio’s operating system. I built fellow and admin onboarding, a 10-step provisioning agent, the compliance desk, finance flows and privacy-first analytics.</p>
           <span class="mono card__note">INTERNAL · UTOPIA STUDIO</span>
         </article>
         <article class="card">
-          <div class="card__media"><img src="assets/work/prview.jpg?v=garden3" alt="" loading="lazy"></div>
+          <div class="card__media"><img src="assets/work/prview.jpg?v=garden8" alt="" loading="lazy"></div>
           <div class="card__meta mono"><span>CLAUDE CODE</span><span>PLAYWRIGHT</span><span>FFMPEG</span></div>
           <h3 class="card__title">PRview</h3>
           <p class="card__desc">A Claude Code plugin that films a narrated, captioned 1080p before-and-after walkthrough of every merged PR, plus a weekly release reel.</p>
           <span class="mono card__note">INTERNAL TOOL · CLAUDE CODE PLUGIN</span>
         </article>
         <article class="card">
-          <div class="card__media"><img src="assets/work/rnd-desk.jpg?v=garden3" alt="" loading="lazy"></div>
+          <div class="card__media"><img src="assets/work/rnd-desk.jpg?v=garden8" alt="" loading="lazy"></div>
           <div class="card__meta mono"><span>RAG</span><span>AI SDK</span><span>RESEARCH</span></div>
           <h3 class="card__title">R&amp;D Desk</h3>
           <p class="card__desc">An AI research workspace: a knowledge graph from your tools, research scouts, a tool-calling concierge agent and auto-written papers.</p>
           <span class="mono card__note">INTERNAL · UTOPIA STUDIO</span>
         </article>
         <article class="card">
-          <div class="card__media"><img src="assets/work/prepost.jpg?v=garden3" alt="" loading="lazy"></div>
+          <div class="card__media"><img src="assets/work/prepost.jpg?v=garden8" alt="" loading="lazy"></div>
           <div class="card__meta mono"><span>XGBOOST</span><span>BERT</span><span>CNN</span><span>FASTAPI</span></div>
           <h3 class="card__title">PrePost Analytics</h3>
           <p class="card__desc">Predicts a YouTube video’s performance before it’s published, using an ensemble trained on 51,888 videos (95.6% R²).</p>
@@ -138,7 +136,7 @@
           </div>
         </article>
         <a class="card" href="https://github.com/haaj-1/Utopia-ops-node" target="_blank" rel="noopener">
-          <div class="card__media"><img src="assets/work/ops-agent.jpg?v=garden3" alt="" loading="lazy"></div>
+          <div class="card__media"><img src="assets/work/ops-agent.jpg?v=garden8" alt="" loading="lazy"></div>
           <div class="card__meta mono"><span>NODE.JS</span><span>LLM</span><span>LINEAR</span><span>SLACK</span></div>
           <h3 class="card__title">Utopia Ops Agent</h3>
           <p class="card__desc">A zero-dependency onboarding agent: a name and start date go in, and a checklist with owners and due dates comes out, synced to Linear with Slack reminders.</p>
@@ -147,7 +145,7 @@
       </div>
     </section>
 
-    <section class="cta" data-scene="hero">
+    <section class="cta" data-scene="lake">
       <span class="tag">Next</span>
       <h2 class="display display--md">
         <span class="line">Let’s <em class="it">build</em></span>
@@ -188,6 +186,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="main.js?v=20261010-16"></script>
+  <script src="main.js?v=20261010-28"></script>
 </body>
 </html>

@@ -306,10 +306,75 @@
     // live local time next to "Doha, Qatar"
     $$('.live-time').forEach((el) => {
       const fmtTime = new Intl.DateTimeFormat('en-GB', { timeZone: el.dataset.tz, hour: '2-digit', minute: '2-digit' });
-      const tick = () => { el.textContent = fmtTime.format(new Date()) + ' LOCAL'; };
+      const tick = () => { el.textContent = fmtTime.format(new Date()) + ' local'; };
       tick();
       el.hidden = false;
       setInterval(tick, 30000);
+    });
+
+    // cards and text slide up softly as they come into view
+    const reveals = $$('.ax-reveal');
+    if (hasGsap && !reduceMotion && reveals.length) {
+      ScrollTrigger.batch(reveals, {
+        start: 'top 90%', once: true,
+        onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: 1, ease: 'expo.out', stagger: 0.08, overwrite: true }),
+      });
+    } else {
+      reveals.forEach((el) => { el.style.opacity = 1; el.style.transform = 'none'; });
+    }
+
+    // highlights slideshow: autoplay, arrows, drag/swipe, keyboard, pauses on hover
+    $$('[data-carousel]').forEach((car) => {
+      const viewport = $('.ax-carousel__viewport', car);
+      const track = $('.ax-carousel__track', car);
+      const slides = $$('.ax-slide', car);
+      const counter = $('[data-current]', car);
+      const bar = $('.ax-carousel__progress', car);
+      const DURATION = 4800;
+      let index = 0, elapsed = 0, last = performance.now(), paused = false, visible = false;
+      const step = () => slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 12);
+      const maxShift = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
+      const go = (i) => {
+        index = (i + slides.length) % slides.length;
+        track.style.transform = `translate3d(${-Math.min(index * step(), maxShift())}px, 0, 0)`;
+        slides.forEach((sl, k) => sl.classList.toggle('is-active', k === index));
+        counter.textContent = String(index + 1).padStart(2, '0');
+        elapsed = 0;
+      };
+      $('[data-next]', car).addEventListener('click', () => go(index + 1));
+      $('[data-prev]', car).addEventListener('click', () => go(index - 1));
+      car.addEventListener('mouseenter', () => { paused = true; });
+      car.addEventListener('mouseleave', () => { paused = false; });
+      car.addEventListener('focusin', () => { paused = true; });
+      car.addEventListener('focusout', () => { paused = false; });
+      car.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') go(index + 1);
+        if (e.key === 'ArrowLeft') go(index - 1);
+      });
+      let startX = null;
+      viewport.addEventListener('pointerdown', (e) => { startX = e.clientX; });
+      addEventListener('pointerup', (e) => {
+        if (startX === null) return;
+        const dx = e.clientX - startX; startX = null;
+        if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+      });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([en]) => { visible = en.isIntersecting; }, { threshold: 0.3 }).observe(car);
+      } else visible = true;
+      addEventListener('resize', () => go(index));
+      go(0);
+      if (!reduceMotion) {
+        const tick = (now) => {
+          const dt = now - last; last = now;
+          if (!paused && visible && !document.hidden) {
+            elapsed += dt;
+            if (elapsed >= DURATION) go(index + 1);
+          }
+          bar.style.setProperty('--p', Math.min(1, elapsed / DURATION).toFixed(3));
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
     });
 
     // underline sweep on the bio's key phrases once the card is on screen
@@ -339,7 +404,7 @@
 
     if (finePointer && !reduceMotion) {
       // soft spotlight that follows the cursor across each glass card
-      $$('.bio__text, .facts, .job, .toolkit__group').forEach((card) => {
+      $$('.ax-card').forEach((card) => {
         card.classList.add('spot');
         card.addEventListener('pointermove', (e) => {
           const r = card.getBoundingClientRect();

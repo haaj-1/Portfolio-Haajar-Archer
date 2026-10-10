@@ -10,8 +10,7 @@ I build AI agents, automation and data systems that run the work behind the work
 - **Home** (`index.html`): intro, highlights and featured work
 - **About** (`about.html`): bio, experience at Utopia Studio and the APU Career Centre, education and toolkit
 - **Work** (`work.html`): all projects, filterable by AI & Agents or Data & ML
-- **Contact** (`contact.html`): LinkedIn, email, GitHub and resume
-- **Resume** (`resume/Haajar-Archer-Resume.pdf`): public copy of my CV
+- **Contact** (`contact.html`): LinkedIn, email and GitHub
 
 ## How it's built
 
@@ -40,7 +39,7 @@ node build_resume.js out --public   # web copy (no phone or birth date)
 node build_resume.js out            # full CV; reads tools/private.json (not committed)
 ```
 
-Then print `out/*.html` to PDF. The public copy lives at `resume/Haajar-Archer-Resume.pdf`.
+Then print `out/*.html` to PDF. This copy is kept out of the public site.
 
 ## Run locally
 
