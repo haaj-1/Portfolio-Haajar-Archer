@@ -173,7 +173,7 @@ PROJECTS = {
                     desc="Both architectures built from scratch, tuned with Keras Tuner, and compared across 43 traffic sign classes.",
                     href="https://github.com/haaj-1/Traffic_Sign_Recognition"),
     "personality": dict(title="Fivefold: Big Five Predictor", img="personality", tags=["PYTHON", "NEXT.JS", "IPIP"],
-                        desc="Most personality quizzes just give you a label. This one shows its work: a percentile for every trait, how sure it is, and which answers moved each score, from as few as 20 questions.",
+                        desc="A model trained on 597k responses that predicts full 50-question Big Five scores from just 20 answers (R² 0.88), showing per-trait percentiles, measured error bands and the answers behind each score.",
                         href="https://github.com/haaj-1/Personality_Trait_Predictor", live="https://personality-trait-predictor.vercel.app"),
 }
 
