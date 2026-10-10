@@ -158,7 +158,7 @@ PROJECTS = {
                     href="https://github.com/haaj-1/Youtube-Analytics-Website", live="https://prepost-analytics.vercel.app"),
     "qatar": dict(title="Qatar Economic Analysis", img="qatar", tags=["POSTGRESQL", "STAR SCHEMA", "POWER BI"],
                   desc="A medallion warehouse over 15 datasets that traces an 82.7B QR post-World Cup GDP contraction sector by sector.",
-                  href="https://github.com/haaj-1/Qatar-Economic-Analysis"),
+                  href="https://github.com/haaj-1/Qatar-Economic-Analysis", slides="https://docs.google.com/presentation/d/14srrNqura3r7-ZOLyZgPRh4WX8KYZ3FGwH84DVg2xS0/present"),
     "traffic": dict(title="CNN vs Vision Transformer", img="traffic", tags=["TENSORFLOW", "CNN", "VIT"],
                     desc="Both architectures built from scratch, tuned with Keras Tuner, and compared across 43 traffic sign classes.",
                     href="https://github.com/haaj-1/Traffic_Sign_Recognition"),
@@ -177,10 +177,13 @@ def card(key, wide=False):
           <div class="card__meta mono">{tags}</div>
           <h3 class="card__title">{p['title']}</h3>
           <p class="card__desc">{p['desc']}</p>"""
-    if "live" in p:
+    if "live" in p or "slides" in p:
+        primary = (f'<a class="card__link card__link--live" href="{p["live"]}" target="_blank" rel="noopener"><span class="card__dot" aria-hidden="true"></span>Live site <span aria-hidden="true">↗</span></a>'
+                   if "live" in p else
+                   f'<a class="card__link card__link--live" href="{p["slides"]}" target="_blank" rel="noopener">Slides <span aria-hidden="true">↗</span></a>')
         return f"""        <article class="{cls}">{inner}
           <div class="card__links">
-            <a class="card__link card__link--live" href="{p['live']}" target="_blank" rel="noopener"><span class="card__dot" aria-hidden="true"></span>Live site <span aria-hidden="true">↗</span></a>
+            {primary}
             <a class="card__link" href="{p['href']}" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </article>"""
