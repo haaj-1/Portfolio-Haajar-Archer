@@ -3,7 +3,7 @@
 Personal portfolio of **Haajar Saeed Archer**, Agentic Operator at Utopia Studio (Doha, Qatar).
 I build AI agents, automation and data systems that run the work behind the work.
 
-**Live:** https://haaj-1.github.io · **LinkedIn:** https://www.linkedin.com/in/haajar-archer-7900a0242/
+**Live:** https://haaj-1.github.io/Portfolio-Haajar-Archer/ · **LinkedIn:** https://www.linkedin.com/in/haajar-archer-7900a0242/
 
 ## Pages
 
