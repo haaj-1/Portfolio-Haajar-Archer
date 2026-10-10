@@ -7,13 +7,13 @@ LINKEDIN = "https://www.linkedin.com/in/haajar-archer-7900a0242/"
 GITHUB = "https://github.com/haaj-1"
 EMAIL = "ihaajarcher@gmail.com"
 RESUME = "resume/Haajar-Archer-Resume.pdf"
-ASSET_VERSION = "20261010-12"  # bump on each deploy so browsers fetch fresh CSS/JS
+ASSET_VERSION = "20261010-13"  # bump on each deploy so browsers fetch fresh CSS/JS
 
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E"
            "%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23d9c9ff'/%3E%3Cstop offset='1' stop-color='%237b4cf0'/%3E"
            "%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E")
 
-MEDIA_VERSION = "4k"  # bump when the background videos/posters are replaced
+MEDIA_VERSION = "4k2"  # bump when the background videos/posters are replaced
 SCENES = {
     name: (f"assets/{name}.mp4?v={MEDIA_VERSION}", f"assets/{name}.jpg?v={MEDIA_VERSION}", f"assets/{name}-4k.mp4?v={MEDIA_VERSION}")
     for name in ("hero", "data", "portal")
