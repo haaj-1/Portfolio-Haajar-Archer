@@ -271,11 +271,12 @@
 
   /* ---------------- stat counters ---------------- */
   const fmt = (n) => n.toLocaleString('en-US');
-  $$('.stat__num').forEach((el) => {
+  $$('.stat__num, .countup').forEach((el) => {
     const end = +el.dataset.count;
     const suffix = el.dataset.suffix || '';
     if (!hasGsap || reduceMotion) { el.textContent = fmt(end) + suffix; return; }
     const obj = { v: 0 };
+    if (el.classList.contains('countup')) el.textContent = '0';
     ScrollTrigger.create({
       trigger: el, start: 'top 88%', once: true,
       onEnter: () => gsap.to(obj, { v: end, duration: 2, ease: 'power3.out', onUpdate: () => { el.textContent = fmt(Math.round(obj.v)) + suffix; } }),
@@ -289,6 +290,7 @@
     const loopMarquee = () => {
       const boost = 1 + Math.min(Math.abs(velocity) * 0.08, 6);
       marquees.forEach((m) => {
+        if (m.paused) return;
         m.x -= 0.025 * boost * m.dir;
         if (m.x <= -50) m.x += 50;
         if (m.x > 0) m.x -= 50;
@@ -298,6 +300,78 @@
       requestAnimationFrame(loopMarquee);
     };
     requestAnimationFrame(loopMarquee);
+    if (document.body.dataset.page === 'about') {
+      marquees.forEach((m) => {
+        m.el.parentElement.addEventListener('mouseenter', () => { m.paused = true; });
+        m.el.parentElement.addEventListener('mouseleave', () => { m.paused = false; });
+      });
+    }
+  }
+
+  /* ---------------- About page: interactive details ---------------- */
+  if (document.body.dataset.page === 'about') {
+    // live local time next to "Doha, Qatar"
+    $$('.live-time').forEach((el) => {
+      const fmtTime = new Intl.DateTimeFormat('en-GB', { timeZone: el.dataset.tz, hour: '2-digit', minute: '2-digit' });
+      const tick = () => { el.textContent = fmtTime.format(new Date()) + ' LOCAL'; };
+      tick();
+      el.hidden = false;
+      setInterval(tick, 30000);
+    });
+
+    // underline sweep on the bio's key phrases once the card is on screen
+    const bio = $('.bio__text');
+    if (bio && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+        if (e.isIntersecting) { bio.classList.add('is-inview'); io.disconnect(); }
+      }), { threshold: 0.35 });
+      io.observe(bio);
+    } else if (bio) bio.classList.add('is-inview');
+
+    // timeline rail fills as you scroll; each role's dot lights up when reached
+    $$('.jobs--timeline').forEach((list) => {
+      const fill = $('.rail__fill', list);
+      const jobs = $$('.job', list);
+      const update = () => {
+        const r = list.getBoundingClientRect();
+        const mid = window.innerHeight * 0.55;
+        const pct = Math.min(1, Math.max(0, (mid - r.top) / r.height));
+        fill.style.setProperty('--fill', (pct * 100).toFixed(1) + '%');
+        jobs.forEach((j) => j.classList.toggle('is-reached', j.getBoundingClientRect().top + 34 < mid));
+      };
+      if (lenis) lenis.on('scroll', update); else addEventListener('scroll', update, { passive: true });
+      addEventListener('resize', update);
+      update();
+    });
+
+    if (finePointer && !reduceMotion) {
+      // soft spotlight that follows the cursor across each glass card
+      $$('.bio__text, .facts, .job, .toolkit__group').forEach((card) => {
+        card.classList.add('spot');
+        card.addEventListener('pointermove', (e) => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+          card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        });
+      });
+
+      // name letters lift and brighten near the cursor
+      const name = $('[data-proximity]');
+      if (name && hasGsap) {
+        const chars = $$('.char', name);
+        name.addEventListener('pointermove', (e) => {
+          chars.forEach((c) => {
+            const r = c.getBoundingClientRect();
+            const d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+            const k = Math.max(0, 1 - d / 170);
+            gsap.to(c, { y: -k * 16, color: k > 0.35 ? '#ece2ff' : '#fbf8ff', duration: 0.45, ease: 'power3.out', overwrite: 'auto' });
+          });
+        });
+        name.addEventListener('pointerleave', () => {
+          gsap.to(chars, { y: 0, color: '#fbf8ff', duration: 0.7, ease: 'elastic.out(1, 0.5)', stagger: 0.01, overwrite: 'auto' });
+        });
+      }
+    }
   }
 
   /* ---------------- experience accordion ---------------- */

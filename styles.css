@@ -559,3 +559,75 @@ body[data-page="about"] .marquee__item span:last-child { font-size: clamp(30px, 
   body[data-page="about"] .job__head { grid-template-columns: 36px minmax(0, 1fr) 22px; }
   body[data-page="about"] .job__inner { padding-left: 0; }
 }
+
+/* ---------- About page: interactive details ---------- */
+/* cursor spotlight on glass cards */
+body[data-page="about"] .spot { position: relative; isolation: isolate; }
+body[data-page="about"] .spot::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .13), transparent 60%);
+  opacity: 0; transition: opacity .4s var(--ease);
+}
+body[data-page="about"] .spot:hover::before { opacity: 1; }
+
+/* name letters lift towards the cursor */
+body[data-page="about"] [data-proximity] .char { transition: color .3s; }
+
+/* bio: animated underline on key phrases */
+body[data-page="about"] .bio__text p b {
+  background: linear-gradient(90deg, #c9a8ff, #fff) no-repeat 0 100% / 0% 1.5px;
+  padding-bottom: 1px;
+  transition: background-size 1.4s var(--ease);
+}
+body[data-page="about"] .bio__text.is-inview p b { background-size: 100% 1.5px; }
+body[data-page="about"] .bio__text.is-inview p:nth-of-type(3) b { transition-delay: .25s; }
+body[data-page="about"] .countup { font-variant-numeric: tabular-nums; }
+
+/* facts: icons, row hover, live clock */
+body[data-page="about"] .facts dt { display: flex; align-items: center; gap: 8px; }
+body[data-page="about"] .fact-ico { width: 15px; height: 15px; flex: none; fill: none; stroke: #d9c9ff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s, transform .4s var(--ease); }
+body[data-page="about"] .facts > div { transition: padding .4s var(--ease); }
+body[data-page="about"] .facts > div:hover { padding-left: 8px; }
+body[data-page="about"] .facts > div:hover .fact-ico { stroke: #fff; transform: scale(1.15); }
+body[data-page="about"] .live-time {
+  display: inline-flex; align-items: center; gap: 6px; margin-left: 8px;
+  padding: 3px 8px; border-radius: 999px; font-size: 10px; color: #fff;
+  background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .2);
+  vertical-align: 2px;
+}
+body[data-page="about"] .live-time::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34, 197, 94, .25); animation: live-pulse 2s ease-in-out infinite; }
+@keyframes live-pulse { 50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); } }
+
+/* experience / education: scroll-filled timeline */
+body[data-page="about"] .jobs--timeline { position: relative; padding-left: 44px; }
+body[data-page="about"] .rail { position: absolute; left: 14px; top: 30px; bottom: 30px; width: 2px; border-radius: 2px; background: rgba(255, 255, 255, .16); }
+body[data-page="about"] .rail__fill { position: absolute; left: 0; right: 0; top: 0; height: var(--fill, 0%); border-radius: inherit; background: linear-gradient(180deg, #fff, #c9a8ff); box-shadow: 0 0 12px rgba(201, 168, 255, .9); }
+body[data-page="about"] .jobs--timeline .job::after {
+  content: ""; position: absolute; left: -36px; top: 28px; width: 12px; height: 12px; border-radius: 50%;
+  background: #3a1f86; border: 2px solid rgba(255, 255, 255, .45);
+  transition: background .5s var(--ease), box-shadow .5s var(--ease), border-color .5s;
+}
+body[data-page="about"] .jobs--timeline .job.is-reached::after { background: #fff; border-color: #fff; box-shadow: 0 0 0 4px rgba(201, 168, 255, .35), 0 0 18px #c9a8ff; }
+
+/* toolkit: focus the group you're hovering */
+body[data-page="about"] .toolkit__group { transition: filter .4s var(--ease), translate .5s var(--ease), background .4s, border-color .4s; }
+body[data-page="about"] .toolkit__grid:hover .toolkit__group { filter: brightness(.72) saturate(.7); }
+body[data-page="about"] .toolkit__grid .toolkit__group:hover { filter: none; translate: 0 -4px; }
+body[data-page="about"] .toolkit .section-head .pill--ghost { background: rgba(29, 15, 69, .38); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); color: #fff; }
+body[data-page="about"] .toolkit .section-head .pill--ghost:hover { background: rgba(29, 15, 69, .55); }
+body[data-page="about"] .toolkit .chips span { transition: background .3s, color .3s, border-color .3s; }
+body[data-page="about"] .toolkit .chips span:hover { background: #fff; color: var(--violet-800); border-color: #fff; }
+
+/* skills banner: hover to pause and light up an item */
+body[data-page="about"] .marquee__item span:last-child { transition: color .3s, text-shadow .3s; }
+body[data-page="about"] .marquee__item:hover span:last-child { color: #fff; text-shadow: 0 0 30px rgba(220, 190, 255, .9); }
+
+@media (max-width: 640px) {
+  body[data-page="about"] .jobs--timeline { padding-left: 30px; }
+  body[data-page="about"] .rail { left: 8px; }
+  body[data-page="about"] .jobs--timeline .job::after { left: -28px; width: 10px; height: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="about"] .bio__text p b { background-size: 100% 1.5px; }
+}
+body[data-page="about"] .jobs--timeline .job { position: relative; }

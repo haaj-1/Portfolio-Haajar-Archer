@@ -7,7 +7,7 @@ LINKEDIN = "https://www.linkedin.com/in/haajar-archer-7900a0242/"
 GITHUB = "https://github.com/haaj-1"
 EMAIL = "ihaajarcher@gmail.com"
 RESUME = "resume/Haajar-Archer-Resume.pdf"
-ASSET_VERSION = "20261010-14"  # bump on each deploy so browsers fetch fresh CSS/JS
+ASSET_VERSION = "20261010-15"  # bump on each deploy so browsers fetch fresh CSS/JS
 
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E"
            "%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23d9c9ff'/%3E%3Cstop offset='1' stop-color='%237b4cf0'/%3E"
@@ -289,7 +289,7 @@ skills_html = "\n".join(
 
 ABOUT = f"""
     <section class="page-hero" data-scene="hero">
-      <h1 class="display" data-intro>
+      <h1 class="display" data-intro data-proximity>
         <span class="line"><em class="it">Hi,</em> I’m</span>
         <span class="line">Haajar Archer</span>
       </h1>
@@ -299,14 +299,14 @@ ABOUT = f"""
       <div class="bio__text" data-reveal>
         <p class="bio__lede">I’m an Agentic Operator at Utopia Studio in Doha. I build the <em>AI agents</em> and internal platforms that run the studio’s day-to-day work, from onboarding new fellows to compliance, analytics and research.</p>
         <p>I came to engineering through data. I studied <b>Computer Science with a specialism in Data Analytics</b>, building warehouses, dashboards and machine learning models. Now I combine the two: I ship <b>full-stack products in TypeScript and Next.js</b>, wire them into the tools teams already use, and measure whether they actually help.</p>
-        <p>I like work that removes busywork for real people, and I care about testing it properly. I’ve written <b>2,800+ automated tests</b> at Utopia so far.</p>
+        <p>I like work that removes busywork for real people, and I care about testing it properly. I’ve written <b><span class="countup" data-count="2800">2,800</span>+ automated tests</b> at Utopia so far.</p>
       </div>
       <dl class="facts" data-reveal>
-        <div><dt class="mono">Based in</dt><dd>Doha, Qatar</dd></div>
-        <div><dt class="mono">Currently</dt><dd>Agentic Operator Intern, Utopia Studio</dd></div>
-        <div><dt class="mono">Studied</dt><dd>BSc (Hons) Computer Science, Data Analytics · APU</dd></div>
-        <div><dt class="mono">Languages</dt><dd>English (native), Arabic (conversational)</dd></div>
-        <div><dt class="mono">Certified</dt><dd>CCNA: Introduction to Networks · Cisco</dd></div>
+        <div><dt class="mono"><svg class="fact-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Based in</dt><dd>Doha, Qatar <span class="live-time mono" data-tz="Asia/Qatar" hidden></span></dd></div>
+        <div><dt class="mono"><svg class="fact-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg>Currently</dt><dd>Agentic Operator Intern, Utopia Studio</dd></div>
+        <div><dt class="mono"><svg class="fact-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>Studied</dt><dd>BSc (Hons) Computer Science, Data Analytics · APU</dd></div>
+        <div><dt class="mono"><svg class="fact-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>Languages</dt><dd>English (native), Arabic (conversational)</dd></div>
+        <div><dt class="mono"><svg class="fact-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13 7 21l5-3 5 3-1.5-8"/></svg>Certified</dt><dd>CCNA: Introduction to Networks · Cisco</dd></div>
       </dl>
     </section>
 
@@ -318,7 +318,8 @@ ABOUT = f"""
           <span class="line">I’ve worked</span>
         </h2>
       </div>
-      <div class="jobs">
+      <div class="jobs jobs--timeline">
+        <div class="rail" aria-hidden="true"><span class="rail__fill"></span></div>
         <article class="job is-open">
           <button class="job__head" type="button" aria-expanded="true">
             <span class="mono job__idx">(001)</span>
@@ -387,7 +388,8 @@ ABOUT = f"""
           <span class="line">I studied</span>
         </h2>
       </div>
-      <div class="jobs">
+      <div class="jobs jobs--timeline">
+        <div class="rail" aria-hidden="true"><span class="rail__fill"></span></div>
         <article class="job is-open">
           <button class="job__head" type="button" aria-expanded="true">
             <span class="mono job__idx">(001)</span>
