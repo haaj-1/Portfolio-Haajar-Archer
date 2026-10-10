@@ -3,7 +3,7 @@
 Personal portfolio of **Haajar Saeed Archer**, Agentic Operator at Utopia Studio (Doha, Qatar).
 I build AI agents, automation and data systems that run the work behind the work.
 
-**Live:** https://haaj-1.github.io/Portfolio-Haajar-Archer/ · **LinkedIn:** https://www.linkedin.com/in/haajar-archer-7900a0242/
+**Live:** https://haajar-archer.vercel.app · **LinkedIn:** https://www.linkedin.com/in/haajar-archer-7900a0242/
 
 ## Pages
 
@@ -14,7 +14,7 @@ I build AI agents, automation and data systems that run the work behind the work
 
 ## How it's built
 
-A static site with no build step, so it deploys straight to GitHub Pages.
+A static site with no build step, deployed on Vercel (it redeploys automatically on every push to `main`).
 
 - **Motion:** GSAP + ScrollTrigger for character reveals, parallax and the scroll-driven camera push; Lenis for smooth scrolling; a canvas particle field; and a scroll-velocity marquee.
 - **Scenes:** the painterly garden backdrops and project covers were generated with [Higgsfield](https://higgsfield.ai) (GPT Image), upscaled to 4K, and animated in code with a slow camera drift, cursor parallax and drifting petals.
