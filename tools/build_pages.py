@@ -172,8 +172,8 @@ PROJECTS = {
     "traffic": dict(title="CNN vs Vision Transformer", img="traffic", tags=["TENSORFLOW", "CNN", "VIT"],
                     desc="Both architectures built from scratch, tuned with Keras Tuner, and compared across 43 traffic sign classes.",
                     href="https://github.com/haaj-1/Traffic_Sign_Recognition"),
-    "personality": dict(title="Big Five Predictor", img="personality", tags=["PYTHON", "NEXT.JS", "IPIP"],
-                        desc="A short-form Big Five test trained on 597k responses: per-trait percentiles with honest error bands, all in the browser.",
+    "personality": dict(title="Fivefold: Big Five Predictor", img="personality", tags=["PYTHON", "NEXT.JS", "IPIP"],
+                        desc="A personality test website. Answer 20 to 50 statements and see where you stand on each Big Five trait compared with 597k real people, with a margin of error and the answers behind each score. A model trained on that data predicts your full-test result from fewer questions, all in your browser.",
                         href="https://github.com/haaj-1/Personality_Trait_Predictor", live="https://personality-trait-predictor.vercel.app"),
 }
 
