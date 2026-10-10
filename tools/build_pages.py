@@ -172,9 +172,9 @@ PROJECTS = {
     "traffic": dict(title="CNN vs Vision Transformer", img="traffic", tags=["TENSORFLOW", "CNN", "VIT"],
                     desc="Both architectures built from scratch, tuned with Keras Tuner, and compared across 43 traffic sign classes.",
                     href="https://github.com/haaj-1/Traffic_Sign_Recognition"),
-    "personality": dict(title="Big Five Predictor", img="personality", tags=["CATBOOST", "SHAP", "STREAMLIT"],
-                        desc="Five CatBoost models behind an adaptive 25-question quiz, with SHAP explanations for every trait.",
-                        href="https://github.com/haaj-1/Personality_Trait_Predictor", live="https://personalitytraitpredictor.streamlit.app/"),
+    "personality": dict(title="Big Five Predictor", img="personality", tags=["PYTHON", "NEXT.JS", "IPIP"],
+                        desc="A short-form Big Five test trained on 597k responses: per-trait percentiles with honest error bands, all in the browser.",
+                        href="https://github.com/haaj-1/Personality_Trait_Predictor", live="https://personality-trait-predictor.vercel.app"),
 }
 
 
