@@ -200,7 +200,7 @@
       gsap.to($$('[data-reveal]', section), { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.6, stagger: 0.1 });
     });
     gsap.from('.header > *', { y: -30, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, delay: 0.2 });
-    gsap.fromTo('.stage__layer.is-active video', { scale: 1.15 }, { scale: 1, duration: 2.6, ease: 'expo.out' });
+    gsap.fromTo('.stage__layer.is-active video', { scale: 1.08 }, { scale: 1, duration: 2.6, ease: 'expo.out' });
   }
 
   if (hasGsap && !reduceMotion) {
@@ -229,7 +229,7 @@
     });
 
     // slow push-in on the backdrop across the whole page
-    gsap.to('.stage__layer', { scale: 1.14, ease: 'none', scrollTrigger: { trigger: 'main', start: 'top top', end: 'bottom bottom', scrub: 1.2 } });
+    gsap.to('.stage__layer', { scale: 1.06, ease: 'none', scrollTrigger: { trigger: 'main', start: 'top top', end: 'bottom bottom', scrub: 1.2 } });
 
     // opening heading fades as you leave it
     const firstSection = $('main > section');
