@@ -7,13 +7,13 @@
   <meta name="description" content="About Haajar Archer: experience, education and toolkit.">
   <meta property="og:title" content="About — Haajar Archer">
   <meta property="og:description" content="About Haajar Archer: experience, education and toolkit.">
-  <meta property="og:image" content="assets/hero.jpg">
-  <meta name="theme-color" content="#8a6cf0">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23d9c9ff'/%3E%3Cstop offset='1' stop-color='%237b4cf0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E">
+  <meta property="og:image" content="assets/scenes/meadow-1920.jpg">
+  <meta name="theme-color" content="#223020">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23ffe1a8'/%3E%3Cstop offset='1' stop-color='%23d97a8f'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261010-15">
+  <link rel="stylesheet" href="styles.css?v=20261010-16">
 </head>
 <body class="is-loading" data-page="about">
 
@@ -30,11 +30,11 @@
     </button>
   </div>
   <div class="stage" aria-hidden="true">
-    <div class="stage__layer is-active" data-scene="hero">
-      <video data-src="assets/hero.mp4?v=4k2" data-src-4k="assets/hero-4k.mp4?v=4k2" poster="assets/hero.jpg?v=4k2" muted loop playsinline preload="auto"></video>
+    <div class="stage__layer is-active" data-scene="willow">
+      <img src="assets/scenes/willow-1920.jpg?v=garden3" srcset="assets/scenes/willow-1920.jpg?v=garden3 1920w, assets/scenes/willow-3840.jpg?v=garden3 3840w" sizes="100vw" alt="" decoding="async" fetchpriority="high">
     </div>
     <div class="stage__layer" data-scene="portal">
-      <video data-src="assets/portal.mp4?v=4k2" data-src-4k="assets/portal-4k.mp4?v=4k2" poster="assets/portal.jpg?v=4k2" muted loop playsinline preload="metadata"></video>
+      <img src="assets/scenes/willow-1920.jpg?v=garden3" srcset="assets/scenes/willow-1920.jpg?v=garden3 1920w, assets/scenes/willow-3840.jpg?v=garden3 3840w" sizes="100vw" alt="" decoding="async" fetchpriority="low">
     </div>
     <canvas class="stage__particles" id="particles"></canvas>
     <div class="stage__veil"></div>
@@ -64,14 +64,14 @@
 
   <main id="main">
 
-    <section class="page-hero" data-scene="hero">
+    <section class="page-hero" data-scene="willow">
       <h1 class="display" data-intro data-proximity>
         <span class="line"><em class="it">Hi,</em> I’m</span>
         <span class="line">Haajar Archer</span>
       </h1>
     </section>
 
-    <section class="bio" data-scene="hero">
+    <section class="bio" data-scene="willow">
       <div class="bio__text" data-reveal>
         <p class="bio__lede">I’m an Agentic Operator at Utopia Studio in Doha. I build the <em>AI agents</em> and internal platforms that run the studio’s day-to-day work, from onboarding new fellows to compliance, analytics and research.</p>
         <p>I came to engineering through data. I studied <b>Computer Science with a specialism in Data Analytics</b>, building warehouses, dashboards and machine learning models. Now I combine the two: I ship <b>full-stack products in TypeScript and Next.js</b>, wire them into the tools teams already use, and measure whether they actually help.</p>
@@ -86,7 +86,7 @@
       </dl>
     </section>
 
-    <section class="experience" data-scene="hero" id="experience">
+    <section class="experience" data-scene="willow" id="experience">
       <div class="section-head">
         <span class="tag">Experience</span>
         <h2 class="display display--md">
@@ -156,7 +156,7 @@
       </div>
     </section>
 
-    <section class="education" data-scene="hero" id="education">
+    <section class="education" data-scene="willow" id="education">
       <div class="section-head">
         <span class="tag">Education</span>
         <h2 class="display display--md">
@@ -202,7 +202,7 @@
       </div>
     </section>
 
-    <section class="capabilities" data-scene="hero" aria-label="What I do">
+    <section class="capabilities" data-scene="willow" aria-label="What I do">
       <span class="tag">What I do</span>
       <div class="marquee" aria-hidden="true"><div class="marquee__track"></div></div>
       <ul class="sr-only" id="capList">
@@ -221,7 +221,7 @@
       </ul>
     </section>
 
-    <section class="toolkit" data-scene="hero">
+    <section class="toolkit" data-scene="willow">
       <div class="section-head section-head--row">
         <div>
           <span class="tag">Toolkit</span>
@@ -305,6 +305,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="main.js?v=20261010-15"></script>
+  <script src="main.js?v=20261010-16"></script>
 </body>
 </html>

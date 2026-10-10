@@ -7,17 +7,15 @@ LINKEDIN = "https://www.linkedin.com/in/haajar-archer-7900a0242/"
 GITHUB = "https://github.com/haaj-1"
 EMAIL = "ihaajarcher@gmail.com"
 RESUME = "resume/Haajar-Archer-Resume.pdf"
-ASSET_VERSION = "20261010-15"  # bump on each deploy so browsers fetch fresh CSS/JS
+ASSET_VERSION = "20261010-16"  # bump on each deploy so browsers fetch fresh CSS/JS
 
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E"
-           "%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23d9c9ff'/%3E%3Cstop offset='1' stop-color='%237b4cf0'/%3E"
+           "%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23ffe1a8'/%3E%3Cstop offset='1' stop-color='%23d97a8f'/%3E"
            "%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E")
 
-MEDIA_VERSION = "4k2"  # bump when the background videos/posters are replaced
-SCENES = {
-    name: (f"assets/{name}.mp4?v={MEDIA_VERSION}", f"assets/{name}.jpg?v={MEDIA_VERSION}", f"assets/{name}-4k.mp4?v={MEDIA_VERSION}")
-    for name in ("hero", "data", "portal")
-}
+MEDIA_VERSION = "garden3"  # bump when the background scenes are replaced
+# scene key -> image name in assets/scenes/ (each has a 1920px and a 3840px version)
+SCENES = {"hero": "meadow", "data": "forest", "portal": "willow", "willow": "willow"}
 
 NAV = [("about", "about.html", "About"), ("work", "work.html", "Work"), ("contact", "contact.html", "Contact")]
 
@@ -32,8 +30,8 @@ def head(title, desc, first_scene):
   <meta name="description" content="{desc}">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
-  <meta property="og:image" content="assets/hero.jpg">
-  <meta name="theme-color" content="#8a6cf0">
+  <meta property="og:image" content="assets/scenes/meadow-1920.jpg">
+  <meta name="theme-color" content="#223020">
   <link rel="icon" href="{FAVICON}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,11 +58,12 @@ LOADER = """
 def stage(scenes):
     layers = []
     for i, name in enumerate(scenes):
-        src, poster, src4k = SCENES[name]
+        img = SCENES[name]
         active = " is-active" if i == 0 else ""
-        preload = "auto" if i == 0 else "metadata"
+        priority = 'fetchpriority="high"' if i == 0 else 'fetchpriority="low"'
+        base = f"assets/scenes/{img}"
         layers.append(f"""    <div class="stage__layer{active}" data-scene="{name}">
-      <video data-src="{src}" data-src-4k="{src4k}" poster="{poster}" muted loop playsinline preload="{preload}"></video>
+      <img src="{base}-1920.jpg?v={MEDIA_VERSION}" srcset="{base}-1920.jpg?v={MEDIA_VERSION} 1920w, {base}-3840.jpg?v={MEDIA_VERSION} 3840w" sizes="100vw" alt="" decoding="async" {priority}>
     </div>""")
     return f"""
   <div class="stage" aria-hidden="true">
@@ -177,7 +176,7 @@ def card(key, wide=False):
     cls = "card card--wide" if wide else "card"
     tags = "".join(f"<span>{t}</span>" for t in p["tags"])
     inner = f"""
-          <div class="card__media"><img src="assets/work/{p['img']}.jpg" alt="" loading="lazy"></div>
+          <div class="card__media"><img src="assets/work/{p['img']}.jpg?v={MEDIA_VERSION}" alt="" loading="lazy"></div>
           <div class="card__meta mono">{tags}</div>
           <h3 class="card__title">{p['title']}</h3>
           <p class="card__desc">{p['desc']}</p>"""
@@ -288,14 +287,14 @@ skills_html = "\n".join(
         </div>""" for i, (name, items) in enumerate(SKILLS))
 
 ABOUT = f"""
-    <section class="page-hero" data-scene="hero">
+    <section class="page-hero" data-scene="willow">
       <h1 class="display" data-intro data-proximity>
         <span class="line"><em class="it">Hi,</em> I’m</span>
         <span class="line">Haajar Archer</span>
       </h1>
     </section>
 
-    <section class="bio" data-scene="hero">
+    <section class="bio" data-scene="willow">
       <div class="bio__text" data-reveal>
         <p class="bio__lede">I’m an Agentic Operator at Utopia Studio in Doha. I build the <em>AI agents</em> and internal platforms that run the studio’s day-to-day work, from onboarding new fellows to compliance, analytics and research.</p>
         <p>I came to engineering through data. I studied <b>Computer Science with a specialism in Data Analytics</b>, building warehouses, dashboards and machine learning models. Now I combine the two: I ship <b>full-stack products in TypeScript and Next.js</b>, wire them into the tools teams already use, and measure whether they actually help.</p>
@@ -310,7 +309,7 @@ ABOUT = f"""
       </dl>
     </section>
 
-    <section class="experience" data-scene="hero" id="experience">
+    <section class="experience" data-scene="willow" id="experience">
       <div class="section-head">
         <span class="tag">Experience</span>
         <h2 class="display display--md">
@@ -380,7 +379,7 @@ ABOUT = f"""
       </div>
     </section>
 
-    <section class="education" data-scene="hero" id="education">
+    <section class="education" data-scene="willow" id="education">
       <div class="section-head">
         <span class="tag">Education</span>
         <h2 class="display display--md">
@@ -426,7 +425,7 @@ ABOUT = f"""
       </div>
     </section>
 
-    <section class="capabilities" data-scene="hero" aria-label="What I do">
+    <section class="capabilities" data-scene="willow" aria-label="What I do">
       <span class="tag">What I do</span>
       <div class="marquee" aria-hidden="true"><div class="marquee__track"></div></div>
       <ul class="sr-only" id="capList">
@@ -445,7 +444,7 @@ ABOUT = f"""
       </ul>
     </section>
 
-    <section class="toolkit" data-scene="hero">
+    <section class="toolkit" data-scene="willow">
       <div class="section-head section-head--row">
         <div>
           <span class="tag">Toolkit</span>
@@ -522,7 +521,7 @@ CONTACT = f"""
 DESC = "Haajar Saeed Archer builds AI agents, automation and data systems. Agentic Operator at Utopia Studio, Doha."
 pages = {
     "index.html": page("home", "Haajar Archer — Agentic Operator", DESC, ["hero", "data"], HOME),
-    "about.html": page("about", "About — Haajar Archer", "About Haajar Archer: experience, education and toolkit.", ["hero", "portal"], ABOUT),
+    "about.html": page("about", "About — Haajar Archer", "About Haajar Archer: experience, education and toolkit.", ["willow", "portal"], ABOUT),
     "work.html": page("work", "Work — Haajar Archer", "Selected projects by Haajar Archer: AI agents, automation, data and ML.", ["hero", "portal"], WORK),
     "contact.html": page("contact", "Contact — Haajar Archer", "Get in touch with Haajar Archer via LinkedIn or email.", ["portal"], CONTACT),
 }

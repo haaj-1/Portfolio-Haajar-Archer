@@ -18,7 +18,7 @@ I build AI agents, automation and data systems that run the work behind the work
 A static site with no build step, so it deploys straight to GitHub Pages.
 
 - **Motion:** GSAP + ScrollTrigger for character reveals, parallax and the scroll-driven camera push; Lenis for smooth scrolling; a canvas particle field; and a scroll-velocity marquee.
-- **Scenes:** the backdrop videos and project covers were generated with [Higgsfield](https://higgsfield.ai) (GPT Image + Kling v3), then looped and compressed with FFmpeg.
+- **Scenes:** the painterly garden backdrops and project covers were generated with [Higgsfield](https://higgsfield.ai) (GPT Image), upscaled to 4K, and animated in code with a slow camera drift, cursor parallax and drifting petals.
 - **Type:** Instrument Serif, JetBrains Mono and Inter.
 - **Accessibility:** respects `prefers-reduced-motion`, has keyboard-reachable navigation, and uses no horizontal scrolling on mobile.
 

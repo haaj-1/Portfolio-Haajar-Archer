@@ -13,15 +13,6 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
-  // Backgrounds: 4K for large / high-density screens, 1920px for everyone else
-  // (and for anyone on a data saver or a 2G connection).
-  const conn = navigator.connection || {};
-  const use4k = window.screen.width * (window.devicePixelRatio || 1) >= 2560
-    && !conn.saveData && !/2g$/.test(conn.effectiveType || '');
-  $$('.stage__layer video').forEach((v) => {
-    const src = (use4k && v.getAttribute('data-src-4k')) || v.getAttribute('data-src');
-    if (src) v.src = src;
-  });
 
   // The intro screen shows once per visit; later pages go straight in.
   const store = {
@@ -128,18 +119,21 @@
   /* ---------------- background scenes ---------------- */
   const layers = Object.fromEntries($$('.stage__layer').map((l) => [l.dataset.scene, l]));
   let currentScene = ($('.stage__layer.is-active') || {}).dataset?.scene;
-  const activeVideo = () => layers[currentScene]?.querySelector('video');
   const setScene = (name) => {
     if (!layers[name] || name === currentScene) return;
-    const prev = layers[currentScene];
-    const next = layers[name];
-    next.querySelector('video').play().catch(() => {});
-    next.classList.add('is-active');
-    prev.classList.remove('is-active');
-    const leaving = currentScene;
-    setTimeout(() => { if (currentScene !== leaving) prev.querySelector('video').pause(); }, 1500);
+    layers[name].classList.add('is-active');
+    layers[currentScene].classList.remove('is-active');
     currentScene = name;
   };
+
+  // gentle parallax: the scene shifts slightly against the cursor
+  const stageEl = $('.stage');
+  if (stageEl && finePointer && !reduceMotion) {
+    addEventListener('pointermove', (e) => {
+      stageEl.style.setProperty('--px', (e.clientX / innerWidth - 0.5).toFixed(3));
+      stageEl.style.setProperty('--py', (e.clientY / innerHeight - 0.5).toFixed(3));
+    }, { passive: true });
+  }
 
   /* ---------------- loader / entry ---------------- */
   const loader = $('#loader');
@@ -149,7 +143,6 @@
     if (entered) return;
     entered = true;
     store.set('hx-entered', '1');
-    activeVideo()?.play().catch(() => {});
     loader?.classList.add('is-hidden');
     document.body.classList.remove('is-loading');
     document.body.classList.add('is-entered');
@@ -164,14 +157,14 @@
   } else {
     const bar = $('#loaderBar');
     const count = $('#loaderCount');
-    const firstVideo = activeVideo();
+    const firstScene = $('.stage__layer.is-active img');
     let progress = 0;
-    let assetsReady = !firstVideo;
+    let assetsReady = !firstScene;
     const markReady = () => { assetsReady = true; };
-    if (firstVideo) {
-      if (firstVideo.readyState >= 3) markReady();
-      firstVideo.addEventListener('canplaythrough', markReady, { once: true });
-      firstVideo.addEventListener('error', markReady, { once: true });
+    if (firstScene) {
+      if (firstScene.complete && firstScene.naturalWidth) markReady();
+      firstScene.addEventListener('load', markReady, { once: true });
+      firstScene.addEventListener('error', markReady, { once: true });
     }
     setTimeout(markReady, 6000); // never block on slow networks
     const startedAt = performance.now();
@@ -210,7 +203,7 @@
       gsap.to($$('[data-reveal]', section), { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.6, stagger: 0.1 });
     });
     gsap.from('.header > *', { y: -30, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, delay: 0.2 });
-    gsap.fromTo('.stage__layer.is-active video', { scale: 1.08 }, { scale: 1, duration: 2.6, ease: 'expo.out' });
+    gsap.fromTo('.stage', { scale: 1.08 }, { scale: 1, duration: 2.6, ease: 'expo.out', clearProps: 'scale' });
   }
 
   if (hasGsap && !reduceMotion) {
@@ -364,11 +357,11 @@
             const r = c.getBoundingClientRect();
             const d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
             const k = Math.max(0, 1 - d / 170);
-            gsap.to(c, { y: -k * 16, color: k > 0.35 ? '#ece2ff' : '#fbf8ff', duration: 0.45, ease: 'power3.out', overwrite: 'auto' });
+            gsap.to(c, { y: -k * 16, color: k > 0.35 ? '#ffe3ea' : '#fffaf2', duration: 0.45, ease: 'power3.out', overwrite: 'auto' });
           });
         });
         name.addEventListener('pointerleave', () => {
-          gsap.to(chars, { y: 0, color: '#fbf8ff', duration: 0.7, ease: 'elastic.out(1, 0.5)', stagger: 0.01, overwrite: 'auto' });
+          gsap.to(chars, { y: 0, color: '#fffaf2', duration: 0.7, ease: 'elastic.out(1, 0.5)', stagger: 0.01, overwrite: 'auto' });
         });
       }
     }
@@ -444,25 +437,29 @@
     });
   }
 
-  /* ---------------- floating light particles ---------------- */
+  /* ---------------- drifting petals and golden light motes ---------------- */
   const canvas = $('#particles');
   const ctx = canvas.getContext('2d');
-  let W = 0, H = 0, particles = [], mouseX = 0, mouseY = 0;
+  const PETALS = ['255,214,224', '255,236,240', '252,196,210', '255,248,236'];
+  let W = 0, H = 0, motes = [], petals = [], mouseX = 0, mouseY = 0;
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const makePetal = (anywhere) => ({
+    x: anywhere ? rand(0, W) : rand(-60, W * 0.7), y: anywhere ? rand(0, H) : rand(-80, -20),
+    size: rand(4, 9), vx: rand(0.25, 0.7), vy: rand(0.35, 0.9),
+    rot: rand(0, Math.PI * 2), vr: rand(-0.02, 0.02), flip: rand(0, Math.PI * 2), vf: rand(0.02, 0.05),
+    sway: rand(0, Math.PI * 2), color: PETALS[Math.floor(Math.random() * PETALS.length)], a: rand(0.55, 0.9), depth: rand(0.3, 1),
+  });
   const resize = () => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = canvas.clientWidth; H = canvas.clientHeight;
     canvas.width = W * dpr; canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.round(Math.min(90, (W * H) / 16000));
-    particles = Array.from({ length: n }, () => ({
-      x: Math.random() * W, y: Math.random() * H,
-      r: Math.random() * 1.8 + 0.4,
-      vy: -(Math.random() * 0.25 + 0.05),
-      vx: (Math.random() - 0.5) * 0.12,
-      a: Math.random() * 0.6 + 0.2,
-      tw: Math.random() * Math.PI * 2,
-      depth: Math.random() * 0.8 + 0.2,
+    const n = Math.round(Math.min(70, (W * H) / 22000));
+    motes = Array.from({ length: n }, () => ({
+      x: rand(0, W), y: rand(0, H), r: rand(0.5, 2.2), vy: -rand(0.05, 0.28), vx: rand(-0.08, 0.08),
+      a: rand(0.25, 0.75), tw: rand(0, Math.PI * 2), depth: rand(0.2, 1),
     }));
+    petals = Array.from({ length: Math.round(Math.min(22, W / 70)) }, () => makePetal(true));
   };
   resize();
   addEventListener('resize', resize);
@@ -470,29 +467,33 @@
   const drawParticles = () => {
     ctx.clearRect(0, 0, W, H);
     const scrollDrift = (lenis ? lenis.scroll : scrollY) * 0.05;
-    for (const p of particles) {
+    for (const p of motes) {
       p.x += p.vx; p.y += p.vy; p.tw += 0.02;
-      if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
-      if (p.x < -10) p.x = W + 10;
-      if (p.x > W + 10) p.x = -10;
+      if (p.y < -10) { p.y = H + 10; p.x = rand(0, W); }
       const ox = mouseX * 24 * p.depth;
       let y = p.y + mouseY * 24 * p.depth - (scrollDrift * p.depth) % H;
       if (y < -10) y += H + 20;
-      const alpha = p.a * (0.6 + 0.4 * Math.sin(p.tw));
+      const alpha = p.a * (0.55 + 0.45 * Math.sin(p.tw));
       const g = ctx.createRadialGradient(p.x + ox, y, 0, p.x + ox, y, p.r * 4);
-      g.addColorStop(0, `rgba(255,255,255,${alpha})`);
-      g.addColorStop(1, 'rgba(220,200,255,0)');
+      g.addColorStop(0, `rgba(255,244,214,${alpha})`);
+      g.addColorStop(1, 'rgba(255,214,150,0)');
       ctx.fillStyle = g;
       ctx.beginPath(); ctx.arc(p.x + ox, y, p.r * 4, 0, Math.PI * 2); ctx.fill();
+    }
+    for (let i = 0; i < petals.length; i++) {
+      const p = petals[i];
+      p.sway += 0.012; p.rot += p.vr; p.flip += p.vf;
+      p.x += p.vx + Math.sin(p.sway) * 0.35; p.y += p.vy;
+      if (p.y > H + 30 || p.x > W + 40) { petals[i] = makePetal(false); continue; }
+      ctx.save();
+      ctx.translate(p.x + mouseX * 30 * p.depth, p.y + mouseY * 20 * p.depth);
+      ctx.rotate(p.rot);
+      ctx.scale(1, 0.35 + 0.65 * Math.abs(Math.cos(p.flip)));
+      ctx.fillStyle = `rgba(${p.color},${p.a})`;
+      ctx.beginPath(); ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
     }
     requestAnimationFrame(drawParticles);
   };
   if (!reduceMotion) requestAnimationFrame(drawParticles);
-
-  // pause the active video when the tab is hidden
-  document.addEventListener('visibilitychange', () => {
-    const v = activeVideo();
-    if (!v) return;
-    if (document.hidden) v.pause(); else if (entered) v.play().catch(() => {});
-  });
 })();
