@@ -32,14 +32,14 @@ def head(title, desc, first_scene):
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Haajar Archer">
   <meta property="og:url" content="https://haajar-archer.vercel.app/">
-  <meta property="og:image" content="https://haajar-archer.vercel.app/assets/og-image.jpg?v=2">
+  <meta property="og:image" content="https://haajar-archer.vercel.app/assets/og-image.jpg?v=3">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="haajar: Agentic Operator, AI, automation and data systems">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{desc}">
-  <meta name="twitter:image" content="https://haajar-archer.vercel.app/assets/og-image.jpg?v=2">
+  <meta name="twitter:image" content="https://haajar-archer.vercel.app/assets/og-image.jpg?v=3">
   <meta name="theme-color" content="#223020">
   <link rel="icon" href="{FAVICON}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
