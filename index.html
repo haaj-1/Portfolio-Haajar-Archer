@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="video" href="assets/hero.mp4" type="video/mp4">
-  <link rel="stylesheet" href="styles.css?v=20261010-5">
+  <link rel="stylesheet" href="styles.css?v=20261010-6">
 </head>
 <body class="is-loading" data-page="home">
 
@@ -129,13 +129,16 @@
           <p class="card__desc">An AI research workspace: a knowledge graph from your tools, research scouts, a tool-calling concierge agent and auto-written papers.</p>
           <span class="mono card__note">INTERNAL · UTOPIA STUDIO</span>
         </article>
-        <a class="card" href="https://github.com/haaj-1/Youtube-Analytics-Website" target="_blank" rel="noopener">
+        <article class="card">
           <div class="card__media"><img src="assets/work/prepost.jpg" alt="" loading="lazy"></div>
           <div class="card__meta mono"><span>XGBOOST</span><span>BERT</span><span>CNN</span><span>FASTAPI</span></div>
           <h3 class="card__title">PrePost Analytics</h3>
           <p class="card__desc">Predicts a YouTube video’s performance before it’s published, using an ensemble trained on 51,888 videos (95.6% R²).</p>
-          <span class="mono card__note">VIEW ON GITHUB ↗</span>
-        </a>
+          <div class="card__links">
+            <a class="card__link card__link--live" href="https://prepost-analytics.vercel.app" target="_blank" rel="noopener"><span class="card__dot" aria-hidden="true"></span>Live site <span aria-hidden="true">↗</span></a>
+            <a class="card__link" href="https://github.com/haaj-1/Youtube-Analytics-Website" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
         <a class="card" href="https://github.com/haaj-1/Utopia-ops-node" target="_blank" rel="noopener">
           <div class="card__media"><img src="assets/work/ops-agent.jpg" alt="" loading="lazy"></div>
           <div class="card__meta mono"><span>NODE.JS</span><span>LLM</span><span>LINEAR</span><span>SLACK</span></div>
@@ -187,6 +190,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="main.js?v=20261010-5"></script>
+  <script src="main.js?v=20261010-6"></script>
 </body>
 </html>
