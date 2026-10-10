@@ -508,3 +508,54 @@ body.is-leaving .curtain { opacity: 1; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .js [data-reveal] { opacity: 1; transform: none; }
 }
+
+/* ---------- About page: match the Work page's lighter look and scale ---------- */
+body[data-page="about"] .display--md { font-size: clamp(40px, 4.6vw, 72px); }
+body[data-page="about"] .section-head { margin-bottom: 4.5vh; }
+body[data-page="about"] .page-hero { min-height: 62svh; padding-bottom: 7vh; }
+body[data-page="about"] .bio,
+body[data-page="about"] .experience,
+body[data-page="about"] .education,
+body[data-page="about"] .toolkit { padding-bottom: 12vh; }
+body[data-page="about"] .capabilities { padding-top: 0; padding-bottom: 12vh; }
+
+/* panels use the same glass as the project cards */
+body[data-page="about"] .bio__text,
+body[data-page="about"] .facts,
+body[data-page="about"] .job,
+body[data-page="about"] .toolkit__group {
+  background: rgba(29, 15, 69, .38);
+  border: 1px solid var(--glass-line);
+  border-radius: 22px;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: none;
+}
+body[data-page="about"] .job:hover,
+body[data-page="about"] .toolkit__group:hover { background: rgba(29, 15, 69, .55); border-color: rgba(255, 255, 255, .4); box-shadow: none; }
+body[data-page="about"] .bio__text { padding: clamp(24px, 2.6vw, 38px); }
+body[data-page="about"] .bio__text .bio__lede { font-size: clamp(24px, 2.1vw, 32px); padding-bottom: 22px; margin-bottom: 22px; }
+body[data-page="about"] .bio__text p { font-size: 16px; }
+body[data-page="about"] .facts { padding: 6px clamp(20px, 2vw, 28px); }
+body[data-page="about"] .facts > div { padding: 15px 0; }
+body[data-page="about"] .facts dd { font-size: 16px; }
+
+/* experience / education rows */
+body[data-page="about"] .job__head { padding: 20px 0; grid-template-columns: 56px minmax(0, 1.3fr) minmax(0, 1fr) 170px 24px; }
+body[data-page="about"] .job__title { font-size: clamp(22px, 2vw, 30px); }
+body[data-page="about"] .job__inner { padding-left: 72px; }
+body[data-page="about"] .job.is-open .job__inner { padding-top: 22px; padding-bottom: 28px; }
+body[data-page="about"] .job__lede { font-size: clamp(16px, 1.25vw, 18px); }
+body[data-page="about"] .job li { font-size: 15px; }
+
+/* "what I do" banner: smaller so it reads as a ribbon, not a wall */
+body[data-page="about"] .marquee__item { padding: 0 26px; gap: 10px; }
+body[data-page="about"] .marquee__item span:last-child { font-size: clamp(30px, 3.6vw, 54px); }
+
+@media (max-width: 960px) {
+  body[data-page="about"] .job__head { grid-template-columns: 44px minmax(0, 1fr) 24px; }
+  body[data-page="about"] .job__inner { padding-left: 56px; }
+}
+@media (max-width: 640px) {
+  body[data-page="about"] .job__head { grid-template-columns: 36px minmax(0, 1fr) 22px; }
+  body[data-page="about"] .job__inner { padding-left: 0; }
+}

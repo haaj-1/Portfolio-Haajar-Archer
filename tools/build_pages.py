@@ -7,7 +7,7 @@ LINKEDIN = "https://www.linkedin.com/in/haajar-archer-7900a0242/"
 GITHUB = "https://github.com/haaj-1"
 EMAIL = "ihaajarcher@gmail.com"
 RESUME = "resume/Haajar-Archer-Resume.pdf"
-ASSET_VERSION = "20261010-13"  # bump on each deploy so browsers fetch fresh CSS/JS
+ASSET_VERSION = "20261010-14"  # bump on each deploy so browsers fetch fresh CSS/JS
 
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E"
            "%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23d9c9ff'/%3E%3Cstop offset='1' stop-color='%237b4cf0'/%3E"
@@ -288,14 +288,14 @@ skills_html = "\n".join(
         </div>""" for i, (name, items) in enumerate(SKILLS))
 
 ABOUT = f"""
-    <section class="page-hero" data-scene="data">
+    <section class="page-hero" data-scene="hero">
       <h1 class="display" data-intro>
         <span class="line"><em class="it">Hi,</em> I’m</span>
         <span class="line">Haajar Archer</span>
       </h1>
     </section>
 
-    <section class="bio" data-scene="data">
+    <section class="bio" data-scene="hero">
       <div class="bio__text" data-reveal>
         <p class="bio__lede">I’m an Agentic Operator at Utopia Studio in Doha. I build the <em>AI agents</em> and internal platforms that run the studio’s day-to-day work, from onboarding new fellows to compliance, analytics and research.</p>
         <p>I came to engineering through data. I studied <b>Computer Science with a specialism in Data Analytics</b>, building warehouses, dashboards and machine learning models. Now I combine the two: I ship <b>full-stack products in TypeScript and Next.js</b>, wire them into the tools teams already use, and measure whether they actually help.</p>
@@ -310,7 +310,7 @@ ABOUT = f"""
       </dl>
     </section>
 
-    <section class="experience" data-scene="data" id="experience">
+    <section class="experience" data-scene="hero" id="experience">
       <div class="section-head">
         <span class="tag">Experience</span>
         <h2 class="display display--md">
@@ -379,7 +379,7 @@ ABOUT = f"""
       </div>
     </section>
 
-    <section class="education" data-scene="data" id="education">
+    <section class="education" data-scene="hero" id="education">
       <div class="section-head">
         <span class="tag">Education</span>
         <h2 class="display display--md">
@@ -424,7 +424,7 @@ ABOUT = f"""
       </div>
     </section>
 
-    <section class="capabilities" data-scene="data" aria-label="What I do">
+    <section class="capabilities" data-scene="hero" aria-label="What I do">
       <span class="tag">What I do</span>
       <div class="marquee" aria-hidden="true"><div class="marquee__track"></div></div>
       <ul class="sr-only" id="capList">
@@ -458,7 +458,7 @@ ABOUT = f"""
 {skills_html}
       </div>
     </section>
-""" + CTA.format(scene="hero", l1="See what <em class=\"it\">I’ve</em>", l2="built",
+""" + CTA.format(scene="portal", l1="See what <em class=\"it\">I’ve</em>", l2="built",
                  buttons=btn("work.html", "View my work", primary=True) + "\n        " + btn("contact.html", "Contact"))
 
 # ---------------------------------------------------------------- work
@@ -520,7 +520,7 @@ CONTACT = f"""
 DESC = "Haajar Saeed Archer builds AI agents, automation and data systems. Agentic Operator at Utopia Studio, Doha."
 pages = {
     "index.html": page("home", "Haajar Archer — Agentic Operator", DESC, ["hero", "data"], HOME),
-    "about.html": page("about", "About — Haajar Archer", "About Haajar Archer: experience, education and toolkit.", ["data", "hero"], ABOUT),
+    "about.html": page("about", "About — Haajar Archer", "About Haajar Archer: experience, education and toolkit.", ["hero", "portal"], ABOUT),
     "work.html": page("work", "Work — Haajar Archer", "Selected projects by Haajar Archer: AI agents, automation, data and ML.", ["hero", "portal"], WORK),
     "contact.html": page("contact", "Contact — Haajar Archer", "Get in touch with Haajar Archer via LinkedIn or email.", ["portal"], CONTACT),
 }
