@@ -46,6 +46,28 @@
   };
   $$('.display .line').forEach(splitInto);
 
+  // manifesto copy: wrap each word (highlight chips stay whole) so it can light up on scroll
+  const wrapWords = (node) => {
+    [...node.childNodes].forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+          const w = document.createElement('span');
+          w.className = 'w';
+          w.textContent = part;
+          frag.appendChild(w);
+        });
+        child.replaceWith(frag);
+      } else if (child.nodeType === Node.ELEMENT_NODE) {
+        if (child.classList.contains('hl')) child.classList.add('w');
+        else wrapWords(child);
+      }
+    });
+  };
+  $$('[data-words]').forEach(wrapWords);
+
   /* ---------------- capability marquee (about page) ---------------- */
   const marquees = [];
   const track = $('.marquee__track');
@@ -241,11 +263,47 @@
     $$('.card').forEach((c, i) => {
       gsap.from(c, { y: 90, opacity: 0, duration: 1.2, ease: 'expo.out', delay: (i % 3) * 0.08, scrollTrigger: { trigger: c, start: 'top 94%' } });
     });
-    $$('.job, .toolkit__group, .facts > div, .contact__list > div').forEach((el, i) => {
+    $$('.job, .toolkit__group, .contact__list > div').forEach((el, i) => {
       gsap.from(el, { y: 30, opacity: 0, duration: 1, ease: 'expo.out', delay: (i % 4) * 0.06, scrollTrigger: { trigger: el, start: 'top 94%' } });
     });
+
+    // manifesto: each word brightens as you scroll through it
+    $$('[data-words]').forEach((p) => {
+      gsap.fromTo($$('.w', p), { opacity: 0.16 }, {
+        opacity: 1, ease: 'none', stagger: 0.1,
+        scrollTrigger: { trigger: p, start: 'top 82%', end: 'bottom 42%', scrub: 0.6 },
+      });
+    });
+
+    // fact tiles cascade in
+    if ($('.factrow')) {
+      gsap.from('.fact', { y: 60, opacity: 0, rotate: 2, duration: 1.1, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '.factrow', start: 'top 88%' } });
+    }
+
+    // my story: pin the section and slide the chapters sideways (desktop only)
+    const chapters = $('.chapters');
+    if (chapters) {
+      const mm = gsap.matchMedia();
+      mm.add('(min-width: 900px)', () => {
+        chapters.classList.add('is-pinned');
+        const track = $('.chapters__track', chapters);
+        const distance = () => Math.max(0, track.scrollWidth - track.parentElement.clientWidth + parseFloat(getComputedStyle(track.parentElement).paddingLeft));
+        const tween = gsap.to(track, {
+          x: () => -distance(), ease: 'none',
+          scrollTrigger: { trigger: chapters, start: 'top top', end: () => '+=' + distance(), pin: true, scrub: 1, invalidateOnRefresh: true, refreshPriority: 1 },
+        });
+        $$('.chapter__media img', chapters).forEach((img) => {
+          gsap.fromTo(img, { xPercent: -6 }, { xPercent: 6, ease: 'none', scrollTrigger: { trigger: img, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true } });
+        });
+        return () => chapters.classList.remove('is-pinned');
+      });
+      mm.add('(max-width: 899px)', () => {
+        gsap.from($$('.chapter', chapters), { y: 70, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: chapters, start: 'top 85%' } });
+      });
+    }
   } else {
     $$('[data-reveal]').forEach((el) => { el.style.opacity = 1; el.style.transform = 'none'; });
+    $$('[data-words] .w').forEach((w) => { w.style.opacity = 1; });
   }
 
   // scene switching works with or without motion
@@ -261,7 +319,7 @@
 
   /* ---------------- stat counters ---------------- */
   const fmt = (n) => n.toLocaleString('en-US');
-  $$('.stat__num').forEach((el) => {
+  $$('.stat__num, .chapter__big').forEach((el) => {
     const end = +el.dataset.count;
     const suffix = el.dataset.suffix || '';
     if (!hasGsap || reduceMotion) { el.textContent = fmt(end) + suffix; return; }
