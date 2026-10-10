@@ -449,10 +449,10 @@ WORK = f"""
       </div>
       <div class="grid" id="workGrid">
 {card("utopia-os", wide=True).replace('class="card card--wide"', 'class="card card--wide" data-cat="ai"', 1)}
-{card("rnd-desk").replace('class="card"', 'class="card" data-cat="ai"', 1)}
-{card("prview").replace('class="card"', 'class="card" data-cat="ai"', 1)}
-{card("ops-agent").replace('class="card"', 'class="card" data-cat="ai"', 1)}
 {card("prepost").replace('class="card"', 'class="card" data-cat="data"', 1)}
+{card("prview").replace('class="card"', 'class="card" data-cat="ai"', 1)}
+{card("rnd-desk").replace('class="card"', 'class="card" data-cat="ai"', 1)}
+{card("ops-agent").replace('class="card"', 'class="card" data-cat="ai"', 1)}
 {card("qatar").replace('class="card"', 'class="card" data-cat="data"', 1)}
 {card("traffic").replace('class="card"', 'class="card" data-cat="data"', 1)}
 {card("personality").replace('class="card"', 'class="card" data-cat="data"', 1)}
