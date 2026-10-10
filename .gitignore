@@ -2,3 +2,4 @@
 tools/private.json
 tools/node_modules/
 tools/out/
+.vercel
