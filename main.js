@@ -13,6 +13,16 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
+  // Backgrounds: 4K for large / high-density screens, 1920px for everyone else
+  // (and for anyone on a data saver or a 2G connection).
+  const conn = navigator.connection || {};
+  const use4k = window.screen.width * (window.devicePixelRatio || 1) >= 2560
+    && !conn.saveData && !/2g$/.test(conn.effectiveType || '');
+  $$('.stage__layer video').forEach((v) => {
+    const src = (use4k && v.getAttribute('data-src-4k')) || v.getAttribute('data-src');
+    if (src) v.src = src;
+  });
+
   // The intro screen shows once per visit; later pages go straight in.
   const store = {
     get(k) { try { return sessionStorage.getItem(k); } catch { return null; } },
