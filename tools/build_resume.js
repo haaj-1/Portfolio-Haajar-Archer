@@ -88,8 +88,9 @@ const CV = {
       { kind: 'project', title: 'TRAFFIC SIGN RECOGNITION: CNN VS VISION TRANSFORMER', date: 'Mar 2026', bullets: [
         'Built a CNN and a Vision Transformer from scratch in TensorFlow for 43 sign classes, tuned with Keras Tuner and evaluated with ROC-AUC, confusion matrices and classification reports.',
       ] },
-      { kind: 'project', title: 'BIG FIVE PERSONALITY PREDICTOR', date: 'Aug 2025', bullets: [
-        'Trained 5 CatBoost models (one per OCEAN trait) behind a 25-question adaptive Streamlit app, with SHAP-ranked question selection and SHAP waterfall explanations for every prediction.',
+      { kind: 'project', title: 'BIG FIVE PERSONALITY PREDICTOR', date: 'Oct 2026', bullets: [
+        'Trained a short-form Big Five model on 597,100 IPIP responses: one linear model per test length predicts full 50-item scores (R² 0.92 at 25 questions, on par with LightGBM and an MLP), with per-trait percentiles and error bands.',
+        'Shipped it as a static Next.js site with all inference in the browser and exact per-answer explanations, verified by Python/TypeScript parity, pytest, Vitest and Playwright tests.',
       ] },
       { kind: 'project', title: 'DIGITAL MARKETING FUNNEL & WEB ANALYTICS', date: 'Sept 2025', bullets: [
         'Evaluated Amazon’s funnel across awareness, consideration, conversion and loyalty, and benchmarked traffic against eBay (33.9% vs 39.3% bounce rate) using Google Analytics data to recommend mobile drop-off fixes.',
