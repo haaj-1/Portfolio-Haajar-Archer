@@ -232,7 +232,7 @@ section { position: relative; padding: 0 var(--gutter); }
 .section-head { margin-bottom: 7vh; }
 
 /* experience */
-.experience { padding-bottom: 18vh; }
+.experience, .education { padding-bottom: 18vh; }
 .jobs { border-top: 1px solid var(--glass-line); }
 .job { border-bottom: 1px solid var(--glass-line); }
 .job__head {
